@@ -1,0 +1,48 @@
+{
+  "name": "@spotify-internal/plugin-scaffolder-backend-module-echo-action",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.cjs.js",
+    "types": "dist/index.d.ts",
+    "registry": "https://sandbox.spotifyportal.com/api/plugin-installer/registry/npm"
+  },
+  "backstage": {
+    "role": "backend-plugin-module",
+    "pluginId": "scaffolder",
+    "pluginPackage": "@spotify-internal/plugin-scaffolder-backend-module-echo-action"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "publish": "yarn npm publish"
+  },
+  "dependencies": {
+    "@backstage/backend-plugin-api": "^1.4.0",
+    "@backstage/plugin-scaffolder-node": "^0.9.0",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.33.0",
+    "@backstage/plugin-scaffolder-node-test-utils": "^0.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.12",
+    "@types/webpack-env": "^1.18.8"
+  },
+  "files": [
+    "dist"
+  ],
+  "packageManager": "yarn@4.6.0"
+}
