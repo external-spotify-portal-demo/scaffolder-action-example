@@ -1,0 +1,25 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-echo-template
+  title: Example Echo Template
+spec:
+  owner: group:unknown
+  type: example
+
+  parameters:
+    - title: Message
+      required:
+        - message
+      properties:
+        message:
+          title: Message
+          type: string
+          description: Message to log
+
+  steps:
+    - id: echo
+      name: Echo
+      action: example:echo
+      input:
+        message: ${{ parameters.message }}
