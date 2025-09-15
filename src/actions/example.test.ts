@@ -1,18 +1,18 @@
-import { createMockActionContext } from '@backstage/plugin-scaffolder-node-test-utils';
-import { createEchoAction } from './example';
+import { createMockActionContext } from "@backstage/plugin-scaffolder-node-test-utils";
+import { createEchoAction } from "./example";
 
-describe('createEchoAction', () => {
-  it('should call action', async () => {
+describe("createEchoAction", () => {
+  it("should call action", async () => {
     const action = createEchoAction();
 
     await expect(
       action.handler(
         createMockActionContext({
           input: {
-            message: 'hello, world',
+            message: "hello, world",
           },
-        }),
-      ),
+        })
+      )
     ).resolves.toBeUndefined();
   });
 });

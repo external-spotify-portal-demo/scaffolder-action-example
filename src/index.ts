@@ -5,4 +5,4 @@
  * @packageDocumentation
  */
 
-export { scaffolderModule as default } from './module';
+export { scaffolderModule as default } from "./module";
