@@ -1,6 +1,10 @@
-import { createBackendModule } from "@backstage/backend-plugin-api";
+import {
+  coreServices,
+  createBackendModule,
+} from "@backstage/backend-plugin-api";
 import { scaffolderActionsExtensionPoint } from "@backstage/plugin-scaffolder-node/alpha";
 import { createEchoAction } from "./actions/example";
+import { fromRoot } from "./config";
 
 /**
  * A backend module that registers the action into the scaffolder
@@ -11,10 +15,12 @@ export const scaffolderModule = createBackendModule({
   register({ registerInit }) {
     registerInit({
       deps: {
+        rootConfig: coreServices.rootConfig,
         scaffolderActions: scaffolderActionsExtensionPoint,
       },
-      async init({ scaffolderActions }) {
-        scaffolderActions.addActions(createEchoAction());
+      async init({ rootConfig, scaffolderActions }) {
+        const config = fromRoot(rootConfig);
+        scaffolderActions.addActions(createEchoAction(config));
       },
     });
   },

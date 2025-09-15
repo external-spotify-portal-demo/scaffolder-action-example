@@ -1,11 +1,12 @@
 import { createTemplateAction } from "@backstage/plugin-scaffolder-node";
+import { ExampleConfig } from "../config";
 
 /**
  * Creates an `example:echo` Scaffolder action.
  *
  * @public
  */
-export function createEchoAction() {
+export function createEchoAction(config: ExampleConfig) {
   // For more information on how to define custom actions, see
   //   https://backstage.io/docs/features/software-templates/writing-custom-actions
   return createTemplateAction({
@@ -21,7 +22,9 @@ export function createEchoAction() {
       },
     },
     async handler(ctx) {
-      ctx.logger.info(ctx.input.message);
+      for (let i = 0; i < config.multiplier; i++) {
+        ctx.logger.info(ctx.input.message);
+      }
       await new Promise((resolve) => setTimeout(resolve, 1000));
     },
   });

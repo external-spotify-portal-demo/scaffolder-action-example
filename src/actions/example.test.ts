@@ -3,7 +3,7 @@ import { createEchoAction } from "./example";
 
 describe("createEchoAction", () => {
   it("should call action", async () => {
-    const action = createEchoAction();
+    const action = createEchoAction({ multiplier: 1 });
 
     await expect(
       action.handler(
